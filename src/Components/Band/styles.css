@@ -38,3 +38,32 @@ body{
     font-size: 14px;
     margin-top: 5px;
 }
+body {
+    background-color: #f0f0ff;
+}
+
+.bands-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Individual band item */
+.band-item {
+    width: 300px;
+    margin-bottom: 10px;
+    padding: 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.band-item:hover {
+    transform: scale(1.05); /* Slightly increase size on hover */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add a slight shadow on hover */
+}
+
+.band-link {
+    text-decoration: none; /* Remove default link styles */
+    color: inherit; /* Inherit color from parent */
+}
