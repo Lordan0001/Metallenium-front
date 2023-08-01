@@ -1,0 +1,45 @@
+.header {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+}
+
+.nav {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.menu {
+    list-style: none;
+    display: flex;
+}
+
+.menu li {
+    margin-right: 20px;
+}
+
+.menu li a {
+    text-decoration: none;
+    color: white;
+    padding: 5px 10px;
+}
+
+.menu li a:hover {
+    background-color: #555;
+}
+.logo {
+    /* Styles for the logo link */
+    text-decoration: none; /* Remove underline */
+    color: #fff; /* Set the color for the link text */
+}
+
+.logo:hover {
+    /* Styles when hovering over the logo link (optional) */
+    color: #f0f0ff; /* Set the color for the link text on hover */
+}

@@ -1,0 +1,40 @@
+
+body{
+    background-color: #f0f0ff ;
+}
+.bands-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+/* Individual band item */
+.band-item {
+    width: 300px;
+    margin-bottom: 10px;
+    padding: 0px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.band-image {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 5px;
+}
+
+.band-name {
+    font-size: 24px;
+    margin-top: 10px;
+}
+
+.band-description {
+    font-size: 16px;
+    margin-top: 5px;
+}
+
+.band-type {
+    font-size: 14px;
+    margin-top: 5px;
+}
