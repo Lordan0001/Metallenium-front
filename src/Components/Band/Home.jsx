@@ -1,9 +1,8 @@
-// Home.js
 import React, { useEffect, useState } from "react";
 import { Service } from "../../Service/Service";
 import BandItem from "./BandItem";
-import Header from "../Header/header";
-import "./styles.css"; // Import the CSS file
+import Header from "../Header/Header";
+
 
 const Home = () => {
     const [bands, setBands] = useState([]);

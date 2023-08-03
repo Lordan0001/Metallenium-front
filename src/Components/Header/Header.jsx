@@ -9,10 +9,9 @@ const Header = () => {
              <Link   className="logo" to='/'>Metallenium</Link>
 
                 <ul className="menu">
-                    <li><a href="/">Home</a></li>
-                    <li><a href="/bands">Bands</a></li>
-                    <li><a href="/albums">Albums</a></li>
-                    <li><a href="/contact">Contact</a></li>
+                    <li><Link className={"linkHeader"} to="/">Home</Link></li>
+                    <li><Link className={"linkHeader"} to='/albums'>Albums</Link></li>
+                    <li><Link className={"linkHeader"} to='/publish'>Publish</Link></li>
                 </ul>
             </nav>
         </header>

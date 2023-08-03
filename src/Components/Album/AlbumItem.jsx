@@ -1,17 +1,14 @@
 import React from "react";
 
-const AlbumItem = ({ album }) => {
+const AlbumItem = ({ album, onClick }) => {
+    const handleAlbumClick = () => {
+        onClick(album.albumId);
+    };
 
     return (
-        <div className="band-item">
-            {/*<img*/}
-            {/*    src={`/images/${album.bandName}.webp`}*/}
-            {/*    alt={album.bandName}*/}
-            {/*    className="band-image"*/}
-            {/*/>*/}
-            <h2 className="band-name">{album.albumName}</h2>
-            <p className="band-description">{album.releaseDate}</p>
-
+        <div className="album-item" onClick={handleAlbumClick}>
+            <h2 className="album-name">{album.albumName}</h2>
+            <p className="album-description">Release date: {album.releaseDate?.split('T')[0]}</p>
         </div>
     );
 };
