@@ -12,6 +12,10 @@ export const Service = {
     async getAlbumsByBand (id) {
         const response = await axios.get(`/albums/albumbyband/${id}`)
         return response.data;
+    },
+    async getSongsByAlbums (id) {
+        const response = await axios.get(`/songs/songsbyalbum/${id}`)
+        return response.data;
     }
 
 

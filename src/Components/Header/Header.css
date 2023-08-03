@@ -20,11 +20,8 @@
     display: flex;
 }
 
-.menu li {
+.linkHeader {
     margin-right: 20px;
-}
-
-.menu li a {
     text-decoration: none;
     color: white;
     padding: 5px 10px;
