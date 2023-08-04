@@ -1,5 +1,5 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Home from "../Components/Band/Home";
+import Home from "../Components/Home/Home";
 import Album from "../Components/Album/Album";
 import Publish from "../Components/Publish/Publish";
 

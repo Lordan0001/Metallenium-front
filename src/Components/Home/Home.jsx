@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
-import { Service } from "../../Service/Service";
-import BandItem from "./BandItem";
+import { BandService } from "../../Service/BandService";
+import BandItem from "../Band/BandItem";
 import Header from "../Header/Header";
 
 
@@ -8,7 +8,7 @@ const Home = () => {
     const [bands, setBands] = useState([]);
     useEffect(() => {
         const fetchData = async () => {
-            const data = await Service.getAllBands();
+            const data = await BandService.getAllBands();
             setBands(data);
         };
         fetchData();

@@ -4,10 +4,10 @@ import "./BandStyles.css";
 
 const BandItem = ({ band }) => {
     return (
-        <Link to={`/albums/${band.bandId}`} className="band-link"> {/* Change the URL to include the bandId */}
+        <Link to={`/albums/${band.bandId}`} className="band-link">
             <div className="band-item">
                 <img
-                    src={`/images/${band.bandName}.webp`}
+                    src={`https://localhost:7041/${band.imageUrl}`} // Remove the leading forward slash
                     alt={band.bandName}
                     className="band-image"
                 />

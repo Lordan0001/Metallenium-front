@@ -1,9 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { Service } from "../../Service/Service";
 import AlbumItem from "./AlbumItem";
 import Header from "../Header/Header";
 import SongItem from "../Song/SongItem";
+import {AlbumService} from "../../Service/AlbumService";
+import {SongService} from "../../Service/SongService";
 
 const Album = () => {
     const [albums, setAlbums] = useState([]);
@@ -14,11 +15,11 @@ const Album = () => {
         const fetchData = async () => {
             try {
                 if(!id){
-                    const data = await Service.getAllAlbums();
+                    const data = await AlbumService.getAllAlbums();
                     setAlbums(data);
                 }
                 else{
-                const data = await Service.getAlbumsByBand(id);
+                const data = await AlbumService.getAlbumsByBand(id);
                 setAlbums(data);
                 }
             } catch (error) {
@@ -30,9 +31,8 @@ const Album = () => {
     }, [id]);
 
     const LoadSongs = async (albumId) => {
-        console.log(albumId);
         try {
-            const Songdata = await Service.getSongsByAlbums(albumId);
+            const Songdata = await SongService.getSongsByAlbums(albumId);
             setSongs(Songdata);
         } catch (error) {
             console.error("Error fetching songs:", error);
