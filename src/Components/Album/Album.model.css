@@ -1,0 +1,6 @@
+.bands-container-album {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center; /* Center the band items horizontally */
+    align-items: center; /* Center the band items vertically */
+}

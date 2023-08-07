@@ -1,13 +1,13 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import "./BandStyles.css";
+import "../Home/MainStyle.css";
 
 const BandItem = ({ band }) => {
     return (
         <Link to={`/albums/${band.bandId}`} className="band-link">
             <div className="band-item">
                 <img
-                    src={`https://localhost:7041/${band.imageUrl}`} // Remove the leading forward slash
+                    src={`https://localhost:7041/${band.imageUrl}`}
                     alt={band.bandName}
                     className="band-image"
                 />

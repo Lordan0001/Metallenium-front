@@ -5,26 +5,35 @@ import Header from "../Header/Header";
 import SongItem from "../Song/SongItem";
 import {AlbumService} from "../../Service/AlbumService";
 import {SongService} from "../../Service/SongService";
+import BandItem from "../Band/BandItem";
+import {BandService} from "../../Service/BandService";
 
 const Album = () => {
     const [albums, setAlbums] = useState([]);
     const [songs, setSongs] = useState([]);
+    const [bands,setBands] = useState([])
     const { id } = useParams();
 
     useEffect(() => {
         const fetchData = async () => {
             try {
-                if(!id){
+                if (!id) {
                     const data = await AlbumService.getAllAlbums();
                     setAlbums(data);
-                }
-                else{
-                const data = await AlbumService.getAlbumsByBand(id);
-                setAlbums(data);
+                    setBands([]);
+                } else {
+
+                    const albumData = await AlbumService.getAlbumsByBand(id);
+                    setAlbums(albumData);
+
+
+                    const bandData = await BandService.getOneBand(id);
+                    setBands([bandData]);
                 }
             } catch (error) {
                 console.error("Error fetching albums:", error);
                 setAlbums([]);
+                setBands([]);
             }
         };
         fetchData();
@@ -47,7 +56,13 @@ const Album = () => {
     return (
         <div>
             <Header />
-            <h1>Album list</h1>
+            <div className="bands-container-album">
+                {bands.length ? (
+                    bands.map((band) => <BandItem key={band.bandId} band={band} />)
+                ) : (
+                    <div>no bands</div>
+                )}
+            </div>
             <div className="albums-container" >
                 {albums.length ? (
                     albums.map((album) => (

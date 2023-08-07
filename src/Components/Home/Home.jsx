@@ -17,7 +17,6 @@ const Home = () => {
     return (
         <div>
             <Header />
-            <h1>Band list</h1>
             <div className="bands-container">
                 {bands.length ? (
                     bands.map((band) => <BandItem key={band.bandId} band={band} />)

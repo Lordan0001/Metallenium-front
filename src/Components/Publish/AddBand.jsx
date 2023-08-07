@@ -1,5 +1,6 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import { BandService } from "../../Service/BandService";
+import styles from "./Publish.module.css";
 
 const AddBand = () => {
     const [bandData, setBandData] = useState({
@@ -35,11 +36,9 @@ const AddBand = () => {
             formData.append("bandType", bandData.bandType);
             formData.append("image", bandData.imageFile);
 
-            // Send the form data to the server using your BandService
-            const newBand = await BandService.addBand(formData);
-            console.log("New band added:", newBand);
 
-            // Clear the form after successful submission
+            const newBand = await BandService.addBand(formData);
+
             setBandData({
                 bandName: "",
                 bandDescription: "",
@@ -52,6 +51,8 @@ const AddBand = () => {
     };
 
     return (
+        <div>
+            <p>Band</p>
         <form onSubmit={handleSubmit}>
             <input
                 type="text"
@@ -76,8 +77,8 @@ const AddBand = () => {
             />
             {/* Input for image upload */}
             <input type="file" name="image" onChange={handleImageChange} />
-            <button type="submit">Send</button>
-        </form>
+            <button  type="submit">Send</button>
+        </form></div>
     );
 };
 

@@ -10,12 +10,13 @@ body{
 
 /* Individual band item */
 .band-item {
-    width: 300px;
-    margin-bottom: 10px;
-    padding: 0px;
+    width: 270px;
+    height: 390px;
+    margin: 10px;
     border: 1px solid #ccc;
     border-radius: 5px;
     transition: transform 0.2s, box-shadow 0.2s;
+    overflow: hidden;
 }
 
 .band-image {
@@ -44,17 +45,6 @@ body{
 }
 body {
     background-color: #f0f0ff;
-}
-
-
-/* Individual band item */
-.band-item {
-    width: 300px;
-    margin-bottom: 10px;
-    padding: 0px;
-    border: 1px solid #ccc;
-    border-radius: 5px;
-    transition: transform 0.2s, box-shadow 0.2s;
 }
 
 .band-item:hover {

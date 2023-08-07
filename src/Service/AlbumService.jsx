@@ -10,5 +10,9 @@ export const AlbumService = {
         const response = await axios.get(`/albums/albumbyband/${id}`)
         return response.data;
     },
+    async addAlbum (data) {
+        const response = await axios.post('/albums',data)
+        return response.data;
+    }
 
 }
