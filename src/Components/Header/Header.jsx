@@ -1,17 +1,17 @@
 import React from "react";
-import "./Header.css"; // Подключаем файл стилей
+import styles from "./Header.module.css";
 import {Link} from "react-router-dom";
 const Header = () => {
 
     return (
-        <header className="header">
-            <nav className="nav">
-             <Link   className="logo" to='/'>Metallenium</Link>
+        <header className={styles.header}>
+            <nav className={styles.nav}>
+             <Link   className={styles.logo} to='/'>Metallenium</Link>
 
-                <ul className="menu">
-                    <li><Link className={"linkHeader"} to="/">Home</Link></li>
-                    <li><Link className={"linkHeader"} to='/albums'>Albums</Link></li>
-                    <li><Link className={"linkHeader"} to='/publish'>Publish</Link></li>
+                <ul className={styles.menu}>
+                    <li><Link className={styles.linkHeader} to="/">Home</Link></li>
+                    <li><Link className={styles.linkHeader} to='/albums'>Albums</Link></li>
+                    <li><Link className={styles.linkHeader} to='/publish'>Publish</Link></li>
                 </ul>
             </nav>
         </header>

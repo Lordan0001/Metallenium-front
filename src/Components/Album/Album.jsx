@@ -3,10 +3,12 @@ import { useParams } from "react-router-dom";
 import AlbumItem from "./AlbumItem";
 import Header from "../Header/Header";
 import SongItem from "../Song/SongItem";
+import BandItem from "../Band/BandItem";
 import {AlbumService} from "../../Service/AlbumService";
 import {SongService} from "../../Service/SongService";
-import BandItem from "../Band/BandItem";
 import {BandService} from "../../Service/BandService";
+import styles from "./Album.module.css";
+import Footer from "../Footer/Footer";
 
 const Album = () => {
     const [albums, setAlbums] = useState([]);
@@ -56,7 +58,7 @@ const Album = () => {
     return (
         <div>
             <Header />
-            <div className="bands-container-album">
+            <div className={styles.bandsContainerAlbum}>
                 {bands.length ? (
                     bands.map((band) => <BandItem key={band.bandId} band={band} />)
                 ) : (
@@ -83,6 +85,7 @@ const Album = () => {
                     <div></div>
                 )}
             </div>
+            <Footer/>
         </div>
     );
 };

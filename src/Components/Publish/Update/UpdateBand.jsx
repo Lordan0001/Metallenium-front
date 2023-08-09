@@ -1,13 +1,13 @@
 import React, { useState } from "react";
-import { BandService } from "../../Service/BandService";
-import styles from "./Publish.module.css";
+import { BandService } from "../../../Service/BandService";
 
-const AddBand = () => {
+const UpdateBand = () => {
     const [bandData, setBandData] = useState({
+        bandId : "",
         bandName: "",
         bandDescription: "",
         bandType: "",
-        imageFile: null, // To store the selected image file
+        imageFile: null,
     });
 
     const handleInputChange = (event) => {
@@ -31,15 +31,17 @@ const AddBand = () => {
         try {
             // Prepare form data to send to the server
             const formData = new FormData();
+            formData.append("bandId", bandData.bandId);
             formData.append("bandName", bandData.bandName);
             formData.append("bandDescription", bandData.bandDescription);
             formData.append("bandType", bandData.bandType);
             formData.append("image", bandData.imageFile);
 
 
-            const newBand = await BandService.addBand(formData);
+            const newBand = await BandService.updateBand(formData);
 
             setBandData({
+                bandId: "",
                 bandName: "",
                 bandDescription: "",
                 bandType: "",
@@ -52,8 +54,15 @@ const AddBand = () => {
 
     return (
         <div>
-            <p>Band</p>
+            <p>Update Band</p>
         <form onSubmit={handleSubmit}>
+            <input
+                type="number"
+                name="bandId"
+                placeholder="Band Id"
+                value={bandData.bandId}
+                onChange={handleInputChange}
+            />
             <input
                 type="text"
                 name="bandName"
@@ -82,4 +91,4 @@ const AddBand = () => {
     );
 };
 
-export default AddBand;
+export default UpdateBand;

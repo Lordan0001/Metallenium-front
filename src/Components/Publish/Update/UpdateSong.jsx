@@ -1,10 +1,10 @@
 import React, {useEffect, useState} from "react";
-import {SongService} from "../../Service/SongService";
-import {AlbumService} from "../../Service/AlbumService";
-import styles from "./Publish.module.css";
+import {SongService} from "../../../Service/SongService";
+import {AlbumService} from "../../../Service/AlbumService";
 
-const AddSong = () => {
+const UpdateSong = () => {
     const [songData, setSongData] = useState({
+        songId: "",
         songTitle: "",
         albumId: "",
     });
@@ -35,9 +35,10 @@ const AddSong = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const newAlbum = await SongService.addSong(songData);
+            const newAlbum = await SongService.updateSong(songData);
             console.log("New song added:", newAlbum);
             setSongData({
+                songId: "",
                 songTitle: "",
                 albumId: "",
             });
@@ -48,8 +49,15 @@ const AddSong = () => {
 
     return (
         <div>
-            <p>Song</p>
+            <p>Update Song</p>
         <form onSubmit={handleSubmit}>
+            <input
+                type="number"
+                name="songId"
+                placeholder="Song Id"
+                value={songData.songId}
+                onChange={handleInputChange}
+            />
             <input
                 type="text"
                 name="songTitle"
@@ -72,4 +80,4 @@ const AddSong = () => {
     );
 };
 
-export default AddSong;
+export default UpdateSong;

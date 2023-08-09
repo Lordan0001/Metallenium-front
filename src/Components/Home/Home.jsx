@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { BandService } from "../../Service/BandService";
 import BandItem from "../Band/BandItem";
 import Header from "../Header/Header";
+import Footer from "../Footer/Footer";
 
 
 const Home = () => {
@@ -24,6 +25,7 @@ const Home = () => {
                     <div>no bands</div>
                 )}
             </div>
+            <Footer/>
         </div>
     );
 };

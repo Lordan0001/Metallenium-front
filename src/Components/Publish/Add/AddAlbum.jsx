@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import { AlbumService } from "../../Service/AlbumService";
-import { BandService } from "../../Service/BandService";
-import styles from "./Publish.module.css";
+import { AlbumService } from "../../../Service/AlbumService";
+import { BandService } from "../../../Service/BandService";
 
 const AddAlbum = () => {
     const [albumData, setAlbumData] = useState({
@@ -38,6 +37,7 @@ const AddAlbum = () => {
         event.preventDefault();
         try {
             const newAlbum = await AlbumService.addAlbum(albumData);
+            window.location.reload();//Temp
             console.log("New album added:", newAlbum);
             setAlbumData({
                 albumName: "",
@@ -51,7 +51,7 @@ const AddAlbum = () => {
 
     return (
        <div>
-           <p>Album</p>
+           <p>Add Album</p>
         <form onSubmit={handleSubmit}>
             <input
                 type="text"

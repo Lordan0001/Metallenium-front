@@ -13,5 +13,13 @@ export const BandService = {
     async addBand (data) {
         const response = await axios.post('/bands',data)
         return response.data;
+    },
+    async updateBand (data) {
+        const response = await axios.put('/bands',data)
+        return response.data;
+    },
+    async deleteBand (id){
+     const response = await axios.delete(`/bands/${id}`);
+     return response.data;
     }
 }

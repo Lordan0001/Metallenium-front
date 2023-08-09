@@ -13,6 +13,14 @@ export const SongService = {
     async addSong (data) {
         const response = await axios.post(`/songs`, data)
         return response.data;
+    },
+    async updateSong (data) {
+        const response = await axios.put('/songs',data)
+        return response.data;
+    },
+    async deleteSong (id){
+        const response = await axios.delete(`/songs/${id}`);
+        return response.data;
     }
 
 }

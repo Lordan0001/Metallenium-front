@@ -13,6 +13,14 @@ export const AlbumService = {
     async addAlbum (data) {
         const response = await axios.post('/albums',data)
         return response.data;
+    },
+    async updateAlbum (data) {
+        const response = await axios.put('/albums',data)
+        return response.data;
+    },
+    async deleteAlbum (id){
+        const response = await axios.delete(`/albums/${id}`);
+        return response.data;
     }
 
 }
