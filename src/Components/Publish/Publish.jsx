@@ -38,13 +38,13 @@ const Publish = () => {
     return (
         <div>
             <Header />
-            <div className={styles["main-container"]}>
+            <div className={styles.mainContainer}>
                 <div>
                     {modes.map((mode, index) => (
                         <button
                             key={index}
                             onClick={() => handleModeChange(mode.label)}
-                            className={styles["button-23"]}
+                            className={styles.button23}
                         >
                             {mode.label}
                         </button>
@@ -53,7 +53,7 @@ const Publish = () => {
 
                 <div className={styles.container}>
                     {modes.find((mode) => mode.label === currentMode).components.map((component, index) => (
-                        <div key={index} className={styles["form-container"]}>
+                        <div key={index} className={styles.formContainer}>
                             {component}
                         </div>
                     ))}

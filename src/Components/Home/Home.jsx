@@ -3,6 +3,7 @@ import { BandService } from "../../Service/BandService";
 import BandItem from "../Band/BandItem";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
+import styles from './Home.module.css'
 
 
 const Home = () => {
@@ -18,7 +19,7 @@ const Home = () => {
     return (
         <div>
             <Header />
-            <div className="bands-container">
+            <div className={styles.bandsContainer}>
                 {bands.length ? (
                     bands.map((band) => <BandItem key={band.bandId} band={band} />)
                 ) : (

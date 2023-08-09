@@ -1,0 +1,13 @@
+body {
+    background-color: #050000;
+    color: #f0f0ff;
+}
+
+.bandsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin: 100px;
+}
+
+

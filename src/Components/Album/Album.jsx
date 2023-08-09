@@ -65,7 +65,7 @@ const Album = () => {
                     <div>no bands</div>
                 )}
             </div>
-            <div className="albums-container" >
+            <div className={styles.albumsContainer} >
                 {albums.length ? (
                     albums.map((album) => (
                         <AlbumItem
@@ -78,7 +78,7 @@ const Album = () => {
                     <div>no albums</div>
                 )}
             </div>
-            <div className="songs-container">
+            <div>
                 {songs.length ? (
                     songs.map((song) => <SongItem key={song.songId} song={song} />)
                 ) : (

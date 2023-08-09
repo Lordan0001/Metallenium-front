@@ -1,5 +1,5 @@
 /* Styles for the main container */
-.main-container {
+.mainContainer {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -16,7 +16,7 @@
 }
 
 /* Styles for each individual form container */
-.form-container {
+.formContainer {
     width: 30%;
     padding: 20px;
     border: 2px solid #cccccc;
@@ -25,15 +25,15 @@
 }
 
 /* Styles for the title in each form container */
-.form-container h2 {
+.formContainer h2 {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
 /* Styles for input fields and select */
-.form-container input,
-.form-container select {
+.formContainer input,
+.formContainer select {
     width: 75%; /* Take up the full width of the form container */
     padding: 12px;
     margin-bottom: 15px;
@@ -43,7 +43,7 @@
 }
 
 /* Styles for the submit button */
-.form-container button {
+.formContainer button {
     background-color: #4caf50;
     color: white;
     padding: 12px 20px;
@@ -57,25 +57,18 @@
 }
 
 /* Styles for the hover effect on the submit button */
-.form-container button:hover {
+.formContainer button:hover {
     background-color: #45a049;
 }
 
-.form-container p {
+.formContainer p {
     font-size: 24px;
     font-family: Georgia, serif;
     margin-bottom: 15px;
     text-align: center;
 }
 
-body {
-    background-color: #050000;
-    color: #f0f0ff;
-}
-
-
-/* CSS */
-.button-23 {
+.button23 {
     background-color: #FFFFFF;
     border: 1px solid #222222;
     border-radius: 8px;
@@ -99,18 +92,18 @@ body {
     -webkit-user-select: none;
 }
 
-.button-23:focus-visible {
+.button23:focus-visible {
     box-shadow: #222222 0 0 0 2px, rgba(255, 255, 255, 0.8) 0 0 0 4px;
     transition: box-shadow .2s;
 }
 
-.button-23:active {
+.button23:active {
     background-color: #F7F7F7;
     border-color: #000000;
     transform: scale(.96);
 }
 
-.button-23:disabled {
+.button23:disabled {
     border-color: #DDDDDD;
     color: #DDDDDD;
     cursor: not-allowed;

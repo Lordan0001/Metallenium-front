@@ -1,7 +1,8 @@
+import styles from './SongItem.module.css'
 const SongItem = ({song}) =>{
     return(
-        <div className="song-item">
-            <p className="song-title">  {song.songTitle}</p>
+        <div className={styles.songItem}>
+            <p className={styles.songTitle}>  {song.songTitle}</p>
         </div>
     )
 }
