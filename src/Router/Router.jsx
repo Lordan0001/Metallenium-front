@@ -1,7 +1,7 @@
 import {BrowserRouter, Route, Routes} from "react-router-dom";
-import Home from "../Components/Home/Home";
-import Album from "../Components/Album/Album";
-import Publish from "../Components/Publish/Publish";
+import Home from "../Pages/Home/Home";
+import Album from "../Pages/Album/Album";
+import Manage from "../Pages/Manage/Manage";
 
 const Router = () =>{
     return <BrowserRouter>
@@ -9,7 +9,7 @@ const Router = () =>{
             <Route element={<Home/>} path='/' />
             <Route element={<Album/>} path='/albums/:id' />
             <Route element={<Album/>} path='/albums' />
-            <Route element={<Publish/>} path='/publish' />
+            <Route element={<Manage/>} path='/manage' />
             <Route path='*' element={<div>Not found</div>} />
         </Routes>
     </BrowserRouter>

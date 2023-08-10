@@ -35,7 +35,7 @@ const AddSong = () => {
         event.preventDefault();
         try {
             const newAlbum = await SongService.addSong(songData);
-            console.log("New song added:", newAlbum);
+            window.location.reload();//Temp
             setSongData({
                 songTitle: "",
                 albumId: "",

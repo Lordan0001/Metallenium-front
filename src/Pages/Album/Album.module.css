@@ -1,0 +1,47 @@
+.bandsContainerAlbum {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    margin-top: 10px;
+    opacity: 0; /* Начальное состояние прозрачности */
+    transition: opacity 0.5s ease-in-out;
+}
+.bandsContainerAlbum.loaded {
+    opacity: 1; /* Когда загрузка завершена, делаем контейнер видимым */
+}
+
+.albumsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    opacity: 0;
+    transition: opacity 0.5s ease-in-out;
+}
+.albumsContainer.loaded {
+    opacity: 1;
+}
+.songsContainer {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+    grid-gap: 20px;
+    padding: 20px;
+    opacity: 0; 
+    transition: opacity 0.5s ease-in-out;
+}
+.songsContainer.loaded {
+    opacity: 1;
+}
+.pageContainer {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.bandsContainerAlbum, .albumsContainer, .songsContainer {
+    flex: 1;
+}
+
+.footer {
+    margin-top: auto;
+}

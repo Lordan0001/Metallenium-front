@@ -1,19 +1,19 @@
-import React, { useState } from "react";
-import Header from "../Header/Header";
-import styles from "./Publish.module.css";
-import Footer from "../Footer/Footer";
+import React, { useState, useEffect } from "react";
+import Header from "../../Components/Header/Header";
+import styles from "./Manage.module.css";
+import Footer from "../../Components/Footer/Footer";
 
-import AddBand from "./Add/AddBand";
-import AddAlbum from "./Add/AddAlbum";
-import AddSong from "./Add/AddSong";
-import UpdateBand from "./Update/UpdateBand";
-import UpdateAlbum from "./Update/UpdateAlbum";
-import UpdateSong from "./Update/UpdateSong";
-import DeleteSong from "./Delete/DeleteSong";
-import DeleteAlbum from "./Delete/DeleteAlbum";
-import DeleteBand from "./Delete/DeleteBand";
+import AddBand from "../../Components/Publish/Add/AddBand";
+import AddAlbum from "../../Components/Publish/Add/AddAlbum";
+import AddSong from "../../Components/Publish/Add/AddSong";
+import UpdateBand from "../../Components/Publish/Update/UpdateBand";
+import UpdateAlbum from "../../Components/Publish/Update/UpdateAlbum";
+import UpdateSong from "../../Components/Publish/Update/UpdateSong";
+import DeleteSong from "../../Components/Publish/Delete/DeleteSong";
+import DeleteAlbum from "../../Components/Publish/Delete/DeleteAlbum";
+import DeleteBand from "../../Components/Publish/Delete/DeleteBand";
 
-const Publish = () => {
+const Manage = () => {
     const [currentMode, setCurrentMode] = useState("Add");
 
     const modes = [
@@ -33,7 +33,17 @@ const Publish = () => {
 
     const handleModeChange = (newMode) => {
         setCurrentMode(newMode);
+        // Сохраняем текущий режим в локальное хранилище
+        localStorage.setItem("currentMode", newMode);
     };
+
+    useEffect(() => {
+        // Восстанавливаем текущий режим из локального хранилища при загрузке компонента
+        const savedMode = localStorage.getItem("currentMode");
+        if (savedMode && modes.some((mode) => mode.label === savedMode)) {
+            setCurrentMode(savedMode);
+        }
+    }, []);
 
     return (
         <div>
@@ -65,4 +75,4 @@ const Publish = () => {
     );
 };
 
-export default Publish;
+export default Manage;

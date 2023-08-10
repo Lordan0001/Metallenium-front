@@ -1,19 +1,20 @@
 import React, { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import AlbumItem from "./AlbumItem";
-import Header from "../Header/Header";
-import SongItem from "../Song/SongItem";
-import BandItem from "../Band/BandItem";
+import AlbumItem from "../../Components/AlbumItem/AlbumItem";
+import Header from "../../Components/Header/Header";
+import SongItem from "../../Components/Song/SongItem";
+import BandItem from "../../Components/BandItem/BandItem";
 import {AlbumService} from "../../Service/AlbumService";
 import {SongService} from "../../Service/SongService";
 import {BandService} from "../../Service/BandService";
 import styles from "./Album.module.css";
-import Footer from "../Footer/Footer";
+import Footer from "../../Components/Footer/Footer";
 
 const Album = () => {
     const [albums, setAlbums] = useState([]);
     const [songs, setSongs] = useState([]);
     const [bands,setBands] = useState([])
+    const [loading, setLoading] = useState(true);
     const { id } = useParams();
 
     useEffect(() => {
@@ -37,6 +38,9 @@ const Album = () => {
                 setAlbums([]);
                 setBands([]);
             }
+            finally {
+                setLoading(false);
+            }
         };
         fetchData();
     }, [id]);
@@ -56,16 +60,16 @@ const Album = () => {
     };
 
     return (
-        <div>
+        <div className={styles.pageContainer}>
             <Header />
-            <div className={styles.bandsContainerAlbum}>
+            <div className={`${styles.bandsContainerAlbum} ${!loading ? styles.loaded : ""}`}>
                 {bands.length ? (
                     bands.map((band) => <BandItem key={band.bandId} band={band} />)
                 ) : (
                     <div>no bands</div>
                 )}
             </div>
-            <div className={styles.albumsContainer} >
+            <div className={`${styles.albumsContainer} ${!loading ? styles.loaded : ""}`}>
                 {albums.length ? (
                     albums.map((album) => (
                         <AlbumItem
@@ -78,14 +82,16 @@ const Album = () => {
                     <div>no albums</div>
                 )}
             </div>
-            <div>
+            <div className={`${styles.songsContainer} ${!loading ? styles.loaded : ""}`}>
                 {songs.length ? (
                     songs.map((song) => <SongItem key={song.songId} song={song} />)
                 ) : (
                     <div></div>
                 )}
             </div>
-            <Footer/>
+            <Footer className={`${styles.footer}`} />
+
+
         </div>
     );
 };

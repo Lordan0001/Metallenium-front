@@ -1,18 +1,13 @@
 .songItem {
-    background-color: #f0f0ff;
-    border: 1px solid #ccc;
-    border-radius: 5px;
+    display: flex;
+    align-items: center;
     padding: 10px;
-    margin-bottom: 10px;
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid #ddd;
 }
 
+
 .songTitle {
-    font-size: 18px;
-    font-weight: bold;
-    color: #333;
-    margin: 0;
-    padding: 5px 0;
-    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    color: #ddd;
 
 }

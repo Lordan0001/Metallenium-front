@@ -11,7 +11,7 @@ const Header = () => {
                 <ul className={styles.menu}>
                     <li><Link className={styles.linkHeader} to="/">Home</Link></li>
                     <li><Link className={styles.linkHeader} to='/albums'>Albums</Link></li>
-                    <li><Link className={styles.linkHeader} to='/publish'>Publish</Link></li>
+                    <li><Link className={styles.linkHeader} to='/manage'>Manage</Link></li>
                 </ul>
             </nav>
         </header>
