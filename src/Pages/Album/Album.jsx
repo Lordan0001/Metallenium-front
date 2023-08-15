@@ -9,11 +9,14 @@ import {SongService} from "../../Service/SongService";
 import {BandService} from "../../Service/BandService";
 import styles from "./Album.module.css";
 import Footer from "../../Components/Footer/Footer";
+import {useRecoilState} from "recoil";
+import {albumsState, bandsState, songsState} from "../../Recoil/Atoms";
 
 const Album = () => {
-    const [albums, setAlbums] = useState([]);
-    const [songs, setSongs] = useState([]);
-    const [bands,setBands] = useState([])
+    const [albums, setAlbums] = useRecoilState(albumsState)
+    const [songs, setSongs] = useRecoilState(songsState)
+    const [bands,setBands] = useRecoilState(bandsState)
+
     const [loading, setLoading] = useState(true);
     const { id } = useParams();
 

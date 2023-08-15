@@ -1,13 +1,15 @@
-import React, {useEffect, useState} from "react";
-import Footer from "../../Components/Footer/Footer";
-import BandItem from "../../Components/BandItem/BandItem";
-import Header from "../../Components/Header/Header";
-import {BandService} from "../../Service/BandService";
-import styles from './Home.module.css'
+import React, {useEffect, useState} from 'react';
+import {useRecoilState, useRecoilValue, useSetRecoilState} from 'recoil';
+import { bandsState, loadingState } from '../../Recoil/Atoms';
+import { BandService } from '../../Service/BandService';
+import Footer from '../../Components/Footer/Footer';
+import BandItem from '../../Components/BandItem/BandItem';
+import Header from '../../Components/Header/Header';
+import styles from './Home.module.css';
 
 const Home = () => {
-    const [bands, setBands] = useState([]);
-    const [loading, setLoading] = useState(true); // Добавили состояние для отслеживания загрузки данных
+    const [bands, setBands] = useRecoilState(bandsState);
+    const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         const fetchData = async () => {
@@ -17,7 +19,7 @@ const Home = () => {
             } catch (error) {
                 console.error("Error fetching bands:", error);
             } finally {
-                setLoading(false); // Устанавливаем загрузку в false, независимо от результата
+                setLoading(false);
             }
         };
         fetchData();
@@ -37,4 +39,5 @@ const Home = () => {
         </div>
     );
 };
+
 export default Home;

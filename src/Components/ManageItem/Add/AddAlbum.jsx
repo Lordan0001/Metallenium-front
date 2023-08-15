@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { AlbumService } from "../../../Service/AlbumService";
 import { BandService } from "../../../Service/BandService";
+import {useRecoilState, useSetRecoilState} from "recoil";
+import {albumsState, bandsState} from "../../../Recoil/Atoms";
 
 const AddAlbum = () => {
     const [albumData, setAlbumData] = useState({
@@ -9,7 +11,8 @@ const AddAlbum = () => {
         releaseDate: "",
     });
 
-    const [bands, setBands] = useState([]);
+    const [bands, setBands] = useRecoilState(bandsState);
+   const setAlbums = useSetRecoilState(albumsState)
 
     useEffect(() => {
         // Fetch bands data and store them in the state
@@ -37,8 +40,8 @@ const AddAlbum = () => {
         event.preventDefault();
         try {
             const newAlbum = await AlbumService.addAlbum(albumData);
-            window.location.reload();//Temp
-            console.log("New album added:", newAlbum);
+
+           setAlbums( (prevAlbums) => [...prevAlbums, newAlbum]);
             setAlbumData({
                 albumName: "",
                 bandId: "",

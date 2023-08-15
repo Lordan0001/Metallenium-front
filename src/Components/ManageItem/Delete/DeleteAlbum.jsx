@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react";
 import {AlbumService} from "../../../Service/AlbumService";
+import {useRecoilState} from "recoil";
+import {albumsState} from "../../../Recoil/Atoms";
 
 const DeleteBand = () => {
 
-    const [albums, setAlbums] = useState([]);
+    const [albums, setAlbums] = useRecoilState(albumsState)
     const [selectedAlbumName, setSelectedAlbumName] = useState("");
     const [selectedAlbumId, setSelectedAlbumId] = useState("");
 
@@ -36,10 +38,10 @@ const DeleteBand = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const result = await AlbumService.deleteAlbum(selectedAlbumId);
-            window.location.reload();//TEMP
+            const newAlbum = await AlbumService.deleteAlbum(selectedAlbumId);
 
-            // Clear the selected values
+            setAlbums((prevAlbums) => prevAlbums.filter((album) => album.albumId !== selectedAlbumId));
+
             setSelectedAlbumName("");
             setSelectedAlbumId("");
         } catch (error) {

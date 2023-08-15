@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react";
 import {BandService} from "../../../Service/BandService";
+import {useRecoilState} from "recoil";
+import {bandsState} from "../../../Recoil/Atoms";
 
 const DeleteBand = () => {
 
-    const [bands, setBands] = useState([]);
+    const [bands, setBands] = useRecoilState(bandsState)
     const [selectedBandName, setSelectedBandName] = useState("");
     const [selectedBandId, setSelectedBandId] = useState("");
 
@@ -36,8 +38,8 @@ const DeleteBand = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const result = await BandService.deleteBand(selectedBandId);
-            window.location.reload();//TEMP
+            const newBand = await BandService.deleteBand(selectedBandId);
+            setBands((prevBands) => prevBands.filter((band) => band.bandId !== selectedBandId));
 
             // Clear the selected values
             setSelectedBandName("");

@@ -1,15 +1,16 @@
 import React, { useState } from "react";
 import { BandService } from "../../../Service/BandService";
+import {useSetRecoilState} from "recoil";
+import {bandsState} from "../../../Recoil/Atoms";
 
-const UpdateBand = () => {
+const AddBand = () => {
     const [bandData, setBandData] = useState({
-        bandId : "",
         bandName: "",
         bandDescription: "",
         bandType: "",
         imageFile: null,
     });
-
+    const setBands = useSetRecoilState(bandsState);
     const handleInputChange = (event) => {
         const { name, value } = event.target;
         setBandData({
@@ -31,17 +32,17 @@ const UpdateBand = () => {
         try {
             // Prepare form data to send to the server
             const formData = new FormData();
-            formData.append("bandId", bandData.bandId);
             formData.append("bandName", bandData.bandName);
             formData.append("bandDescription", bandData.bandDescription);
             formData.append("bandType", bandData.bandType);
             formData.append("image", bandData.imageFile);
 
 
-            const newBand = await BandService.updateBand(formData);
+            const newBand = await BandService.addBand(formData);
+            //window.location.reload();//Temp
+            setBands((prevBands) => [...prevBands, newBand]);
 
             setBandData({
-                bandId: "",
                 bandName: "",
                 bandDescription: "",
                 bandType: "",
@@ -54,15 +55,8 @@ const UpdateBand = () => {
 
     return (
         <div>
-            <p>Update Band</p>
+            <p>Add Band</p>
         <form onSubmit={handleSubmit}>
-            <input
-                type="number"
-                name="bandId"
-                placeholder="Band Id"
-                value={bandData.bandId}
-                onChange={handleInputChange}
-            />
             <input
                 type="text"
                 name="bandName"
@@ -91,4 +85,4 @@ const UpdateBand = () => {
     );
 };
 
-export default UpdateBand;
+export default AddBand;

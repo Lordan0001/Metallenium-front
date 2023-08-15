@@ -1,9 +1,11 @@
 import React, {useState, useEffect} from "react";
 import {SongService} from "../../../Service/SongService";
+import {useRecoilState} from "recoil";
+import {songsState} from "../../../Recoil/Atoms";
 
 const DeleteSong = () => {
 
-    const [songs, setSongs] = useState([]);
+    const [songs, setSongs] = useRecoilState(songsState);
     const [selectedSongTitle, setSelectedSongTitle] = useState("");
     const [selectedSongId, setSelectedSongId] = useState("");
 
@@ -36,9 +38,8 @@ const DeleteSong = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const result = await SongService.deleteSong(selectedSongId);
-
-            window.location.reload();//TEMP
+            const newSong = await SongService.deleteSong(selectedSongId);
+            setSongs((prevSongs) => prevSongs.filter((song) => song.songId !== selectedSongId));
 
             // Clear the selected values
             setSelectedSongTitle("");

@@ -3,15 +3,15 @@ import Header from "../../Components/Header/Header";
 import styles from "./Manage.module.css";
 import Footer from "../../Components/Footer/Footer";
 
-import AddBand from "../../Components/Publish/Add/AddBand";
-import AddAlbum from "../../Components/Publish/Add/AddAlbum";
-import AddSong from "../../Components/Publish/Add/AddSong";
-import UpdateBand from "../../Components/Publish/Update/UpdateBand";
-import UpdateAlbum from "../../Components/Publish/Update/UpdateAlbum";
-import UpdateSong from "../../Components/Publish/Update/UpdateSong";
-import DeleteSong from "../../Components/Publish/Delete/DeleteSong";
-import DeleteAlbum from "../../Components/Publish/Delete/DeleteAlbum";
-import DeleteBand from "../../Components/Publish/Delete/DeleteBand";
+import AddBand from "../../Components/ManageItem/Add/AddBand";
+import AddAlbum from "../../Components/ManageItem/Add/AddAlbum";
+import AddSong from "../../Components/ManageItem/Add/AddSong";
+import UpdateBand from "../../Components/ManageItem/Update/UpdateBand";
+import UpdateAlbum from "../../Components/ManageItem/Update/UpdateAlbum";
+import UpdateSong from "../../Components/ManageItem/Update/UpdateSong";
+import DeleteSong from "../../Components/ManageItem/Delete/DeleteSong";
+import DeleteAlbum from "../../Components/ManageItem/Delete/DeleteAlbum";
+import DeleteBand from "../../Components/ManageItem/Delete/DeleteBand";
 
 const Manage = () => {
     const [currentMode, setCurrentMode] = useState("Add");

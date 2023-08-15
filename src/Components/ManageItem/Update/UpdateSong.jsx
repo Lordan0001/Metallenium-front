@@ -1,20 +1,24 @@
 import React, {useEffect, useState} from "react";
 import {SongService} from "../../../Service/SongService";
 import {AlbumService} from "../../../Service/AlbumService";
+import {useRecoilState, useSetRecoilState} from "recoil";
+import {albumsState, songsState} from "../../../Recoil/Atoms";
 
-const AddSong = () => {
+const UpdateSong = () => {
     const [songData, setSongData] = useState({
+        songId: "",
         songTitle: "",
         albumId: "",
     });
 
-    const [albumData, setAlbumData] = useState([])
+    const [albums, setAlbums] = useRecoilState(albumsState);
+    const setSongs = useSetRecoilState(songsState)
     useEffect(() => {
 
             const  fetchData = async () => {
                 try {
                     const data = await AlbumService.getAllAlbums();
-                    setAlbumData(data);
+                    setAlbums(data);
                 } catch (e) {
                     console.error(e);
                 }
@@ -34,9 +38,10 @@ const AddSong = () => {
     const handleSubmit = async (event) => {
         event.preventDefault();
         try {
-            const newAlbum = await SongService.addSong(songData);
-            window.location.reload();//Temp
+            const newSong = await SongService.updateSong(songData);
+           setSongs((prevSongs) => [...prevSongs,newSong]);
             setSongData({
+                songId: "",
                 songTitle: "",
                 albumId: "",
             });
@@ -47,8 +52,15 @@ const AddSong = () => {
 
     return (
         <div>
-            <p>Add Song</p>
+            <p>Update Song</p>
         <form onSubmit={handleSubmit}>
+            <input
+                type="number"
+                name="songId"
+                placeholder="Song Id"
+                value={songData.songId}
+                onChange={handleInputChange}
+            />
             <input
                 type="text"
                 name="songTitle"
@@ -56,9 +68,9 @@ const AddSong = () => {
                 value={songData.songTitle}
                 onChange={handleInputChange}
             />
-            <select name="albumId" value={albumData.albumId} onChange={handleInputChange}>
+            <select name="albumId" value={albums.albumId} onChange={handleInputChange}>
                 <option value="">Select an Album</option>
-                {albumData.map((album) =>(
+                {albums.map((album) =>(
                     <option key={album.albumId} value={album.albumId}>
                         {album.albumName}
                     </option>
@@ -71,4 +83,4 @@ const AddSong = () => {
     );
 };
 
-export default AddSong;
+export default UpdateSong;
