@@ -21,6 +21,7 @@ const Album = () => {
     const { id } = useParams();
 
     useEffect(() => {
+        setSongs([]);
         const fetchData = async () => {
             try {
                 if (!id) {

@@ -32,12 +32,24 @@
     background-color: #555;
 }
 .logo {
-    /* Styles for the logo link */
-    text-decoration: none; /* Remove underline */
-    color: #fff; /* Set the color for the link text */
+     text-decoration: none;
+    color: #fff;
 }
 
 .logo:hover {
-    /* Styles when hovering over the logo link (optional) */
-    color: #f0f0ff; /* Set the color for the link text on hover */
+    color: #f0f0ff;
+}
+.logoutButton{
+    background: none;
+    color: #cccccc;
+}
+.logoutButton:hover {
+    background-color: #808081;
+}
+.userInfo{
+    margin-right: 20px;
+    text-decoration: none;
+    color: white;
+
+
 }
