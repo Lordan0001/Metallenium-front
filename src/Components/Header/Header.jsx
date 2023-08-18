@@ -1,29 +1,69 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from "./Header.module.css";
 import { Link } from "react-router-dom";
-import { useRecoilValue } from "recoil";
-import {isAuthorizedState, userState} from "../../Recoil/Atoms";
+import {useRecoilState, useRecoilValue} from "recoil";
+import {bandsState, isAuthorizedState, userState} from "../../Recoil/Atoms";
 import { useCookies } from 'react-cookie';
-import { tokenState } from "../../Recoil/Atoms";
+import {BandService} from "../../Service/BandService";
+import {RxCross2} from "react-icons/rx";
+
 
 const Header = () => {
     const isAuthorized = useRecoilValue(isAuthorizedState);
     const [cookies, setCookie, removeCookie] = useCookies(['jwt']);
     const user = useRecoilValue(userState);
+    const [searchValue, setSearchValue] = useState("");
+    const [bands,setBands] = useRecoilState(bandsState);
 
     const handleLogout = () => {
-
         removeCookie('jwt');
         window.location.reload();
 
     };
+    const handleSearch = async () =>{
+        try{
+            const searchData  ={
+                "bandName": searchValue,
+                "bandType" : "fake",
+                "bandDescription":"fake"
+            }
+        const searchedBands = await BandService.searchBand(searchData);
+        setBands(searchedBands);
+        }
+        catch (e){
+            console.error(e);
+        }
+    }
+    const handleCross = async () =>{
+        try{
+            const allBands = await BandService.getAllBands();
+            setBands(allBands);
+            setSearchValue('')
+        }
+        catch (e){
+            console.error(e);
+        }
+    }
 
 
     return (
         <header className={styles.header}>
             <nav className={styles.nav}>
                 <Link className={styles.logo} to='/'>Metallenium</Link>
-
+                <div className={styles.searchContainer}>
+                <input
+                    type="text"
+                    className={styles.searchInput}
+                    placeholder="Search..."
+                    value={searchValue}
+                    onChange={(e) => setSearchValue(e.target.value)}
+                    onKeyDown={(e) => {
+                        if (e.key === 'Enter') {
+                            handleSearch();
+                        }}}
+                />
+                <RxCross2 className={styles.crossIcon} onClick={handleCross}/>
+                    </div>
                 <ul className={styles.menu}>
                     <li><Link className={styles.linkHeader} to="/">Home</Link></li>
                     <li><Link className={styles.linkHeader} to="/manage">Manage</Link></li>

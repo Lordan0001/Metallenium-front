@@ -1,4 +1,3 @@
-/* Styles for the main container */
 .mainContainer {
     display: flex;
     flex-direction: column;
@@ -7,34 +6,30 @@
     padding: 20px;
 }
 
-/* Styles for the container holding the forms */
 .container {
     display: flex;
     justify-content: space-between;
-    gap: 20px; /* Add some gap between the form containers */
+    gap: 20px;
     flex-grow: 1;
 }
 
-/* Styles for each individual form container */
 .formContainer {
     width: 30%;
     padding: 20px;
     border: 2px solid #cccccc;
     border-radius: 10px;
-    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1); /* Add a subtle box shadow */
+    box-shadow: 0px 3px 6px rgba(0, 0, 0, 0.1);
 }
 
-/* Styles for the title in each form container */
 .formContainer h2 {
     font-size: 20px;
     font-weight: bold;
     margin-bottom: 10px;
 }
 
-/* Styles for input fields and select */
 .formContainer input,
 .formContainer select {
-    width: 75%; /* Take up the full width of the form container */
+    width: 75%;
     padding: 12px;
     margin-bottom: 15px;
     border: 1px solid #ccc;
@@ -42,7 +37,6 @@
     font-size: 16px;
 }
 
-/* Styles for the submit button */
 .formContainer button {
     background-color: #4caf50;
     color: white;
@@ -51,12 +45,11 @@
     border-radius: 5px;
     cursor: pointer;
     font-size: 16px;
-    transition: background-color 0.3s ease; /* Add a smooth transition */
+    transition: background-color 0.3s ease;
     display: flex;
     flex-direction: column;
 }
 
-/* Styles for the hover effect on the submit button */
 .formContainer button:hover {
     background-color: #45a049;
 }
