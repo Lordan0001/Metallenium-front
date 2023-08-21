@@ -58,9 +58,14 @@
 }
 
 .crossIcon {
-
     margin-left: 8px;
     cursor: pointer;
     color: white;
     font-size: 20px;
 }
+.searchIcon {
+     margin-right: 8px;
+     cursor: pointer;
+     color: white;
+     font-size: 30px;
+ }
